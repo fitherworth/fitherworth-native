@@ -5,6 +5,8 @@ workflows:
     instance_type: mac_mini_m2
 
     environment:
+      groups:
+        - ios_signing
       vars:
         XCODE_PROJECT: "ios/App/App.xcodeproj"
         XCODE_SCHEME: "App"
@@ -32,7 +34,7 @@ workflows:
 
           keychain add-certificates
 
-      - name: Apply signing to Xcode project
+      - name: Apply signing and build IPA
         script: |
           xcode-project use-profiles
 
