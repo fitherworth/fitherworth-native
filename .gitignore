@@ -1,0 +1,8 @@
+node_modules
+.DS_Store
+ios/App/Pods
+ios/App/build
+build
+dist
+.env
+.env.local
