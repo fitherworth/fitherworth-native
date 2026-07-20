@@ -5,6 +5,9 @@ workflows:
     instance_type: mac_mini_m2
 
     environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.fitherworth.app
       vars:
         XCODE_PROJECT: "ios/App/App.xcodeproj"
         XCODE_SCHEME: "App"
@@ -22,15 +25,21 @@ workflows:
       - name: Set build number
         script: cd ios/App && agvtool new-version -all $(($BUILD_NUMBER + 100))
 
-      - name: Set up code signing
+      - name: Fetch iOS signing files
         script: |
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
             --type IOS_APP_STORE \
             --create
 
+      - name: Set up keychain
+        script: |
           keychain initialize
           keychain add-certificates
-          xcode-project use-profiles
+
+      - name: Apply provisioning profiles
+        script: |
+          xcode-project use-profiles \
+            --project "$XCODE_PROJECT"
 
       - name: Build IPA
         script: |
