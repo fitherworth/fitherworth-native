@@ -22,7 +22,7 @@ workflows:
       - name: Set build number
         script: cd ios/App && agvtool new-version -all $(($BUILD_NUMBER + 100))
 
-      - name: Create signing certificate and provisioning profile
+      - name: Set up signing files
         script: |
           keychain initialize
 
@@ -31,14 +31,15 @@ workflows:
             --create
 
           keychain add-certificates
-          xcode-project use-profiles \
-            --project "$XCODE_PROJECT"
 
-      - name: Build IPA
+      - name: Apply signing to Xcode project
         script: |
+          xcode-project use-profiles
+
           xcode-project build-ipa \
             --project "$XCODE_PROJECT" \
-            --scheme "$XCODE_SCHEME"
+            --scheme "$XCODE_SCHEME" \
+            --archive-xcargs "CODE_SIGN_STYLE=Manual"
 
     artifacts:
       - build/ios/ipa/*.ipa
