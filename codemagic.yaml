@@ -6,12 +6,11 @@ workflows:
 
     environment:
       vars:
-        XCODE_WORKSPACE: "ios/App/App.xcworkspace"
+        XCODE_PROJECT: "ios/App/App.xcodeproj"
         XCODE_SCHEME: "App"
         BUNDLE_ID: "com.fitherworth.app"
       node: 22
       xcode: latest
-      cocoapods: default
 
     scripts:
       - name: Install npm dependencies
@@ -23,16 +22,22 @@ workflows:
       - name: Set build number
         script: cd ios/App && agvtool new-version -all $(($BUILD_NUMBER + 100))
 
-      - name: Set up App Store Connect API key
+      - name: Set up code signing
         script: |
-          mkdir -p ~/.appstoreconnect/private_keys
-          echo "$APP_STORE_CONNECT_PRIVATE_KEY" > ~/.appstoreconnect/private_keys/AuthKey_${APP_STORE_CONNECT_KEY_IDENTIFIER}.p8
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
 
-            - name: Build IPA
+          keychain initialize
+          keychain add-certificates
+          xcode-project use-profiles
+
+      - name: Build IPA
         script: |
           xcode-project build-ipa \
-            --project "ios/App/App.xcodeproj" \
+            --project "$XCODE_PROJECT" \
             --scheme "$XCODE_SCHEME"
+
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
