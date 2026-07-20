@@ -6,3 +6,5 @@ build
 dist
 .env
 .env.local
+codemagic_private_key.pem
+codemagic_private_key_public.pem
