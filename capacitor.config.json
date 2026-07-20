@@ -1,0 +1,31 @@
+{
+  "appId": "com.fitherworth.app",
+  "appName": "FitHerWorth",
+  "webDir": "www",
+  "server": {
+    "url": "https://fitherworth.com",
+    "cleartext": false,
+    "androidScheme": "https",
+    "iosScheme": "https"
+  },
+  "ios": {
+    "contentInset": "always",
+    "limitsNavigationsToAppBoundDomains": false,
+    "backgroundColor": "#fbf6f0"
+  },
+  "plugins": {
+    "Keyboard": {
+      "resize": "native",
+      "resizeOnFullScreen": true
+    },
+    "StatusBar": {
+      "style": "DEFAULT",
+      "backgroundColor": "#fbf6f0"
+    },
+    "SplashScreen": {
+      "launchShowDuration": 500,
+      "backgroundColor": "#fbf6f0",
+      "showSpinner": false
+    }
+  }
+}
