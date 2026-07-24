@@ -18,7 +18,7 @@
     "@capacitor/keyboard": "^8.0.5",
     "@capacitor/preferences": "^8.0.1",
     "@capacitor/status-bar": "^8.0.3",
-    "@revenuecat/purchases-capacitor": "^13.2.2"
+    "@revenuecat/purchases-capacitor": "^13.2.4"
   },
   "devDependencies": {
     "typescript": "^7.0.2"
