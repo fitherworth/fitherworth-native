@@ -15,16 +15,17 @@ class DiagnosticBridgeViewController: CAPBridgeViewController {
     override func capacitorDidLoad() {
         super.capacitorDidLoad()
 
-        let config = bridge?.config
-        NativeDiagnostics.shared.log("capacitor_config", [
-            "server_url": config?.serverURL?.absoluteString ?? "nil",
-            "app_start_server_url": config?.appStartServerURL?.absoluteString ?? "nil",
-            "local_url": config?.localURL?.absoluteString ?? "nil",
-            "app_start_path": config?.appStartPath ?? "",
-            "server_hostname": config?.serverHostname ?? "",
-            "scheme": config?.urlScheme ?? "",
-            "url_kind": NativeDiagnostics.classify(config?.serverURL),
-        ])
+       if let config = bridge?.config {
+    NativeDiagnostics.shared.log("capacitor_config", [
+        "server_url": config.serverURL.absoluteString,
+        "app_start_server_url": config.appStartServerURL.absoluteString,
+        "local_url": config.localURL.absoluteString,
+        "app_start_path": config.appStartPath,
+        "url_kind": NativeDiagnostics.classify(config.serverURL),
+    ])
+} else {
+    NativeDiagnostics.shared.log("capacitor_config_missing")
+}
     }
 
     override func viewDidLoad() {
