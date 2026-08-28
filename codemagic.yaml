@@ -53,3 +53,52 @@ workflows:
         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
         issuer_id: $APP_STORE_CONNECT_ISSUER_ID
         submit_to_testflight: true
+
+
+  ios-development:
+    name: iOS Development Device Build
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+
+    environment:
+      groups:
+        - ios_signing
+      vars:
+        XCODE_PROJECT: "ios/App/App.xcodeproj"
+        XCODE_SCHEME: "App"
+        BUNDLE_ID: "com.fitherworth.app"
+      node: 22
+      xcode: latest
+
+    scripts:
+      - name: Install npm dependencies
+        script: npm ci
+
+      - name: Sync Capacitor iOS
+        script: npx cap sync ios
+
+      - name: Set development build number
+        script: cd ios/App && agvtool new-version -all $(($BUILD_NUMBER + 200))
+
+      - name: Set up development signing files
+        script: |
+          keychain initialize
+
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_DEVELOPMENT \
+            --create
+
+          keychain add-certificates
+
+      - name: Apply development signing and build IPA
+        script: |
+          xcode-project use-profiles
+
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME" \
+            --archive-xcargs "CODE_SIGN_STYLE=Manual"
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
