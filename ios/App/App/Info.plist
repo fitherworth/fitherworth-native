@@ -51,5 +51,10 @@
 <true/>
 <key>LSSupportsOpeningDocumentsInPlace</key>
 <true/>
+<key>NSCameraUsageDescription</key>
+<string>FitHerWorth uses your camera to take photos of meals for food and calorie analysis.</string>
+
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>FitHerWorth saves meal photos you capture for food and calorie analysis.</string>
 </dict>
 </plist>

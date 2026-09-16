@@ -13,6 +13,7 @@ workflows:
         BUNDLE_ID: "com.fitherworth.app"
       node: 22
       xcode: latest
+      cocoapods: default
 
     scripts:
       - name: Install npm dependencies
@@ -20,6 +21,11 @@ workflows:
 
       - name: Sync Capacitor iOS
         script: npx cap sync ios
+
+      - name: Install CocoaPods dependencies
+        script: |
+          cd ios/App
+          pod install
 
       - name: Set build number
         script: cd ios/App && agvtool new-version -all $(($BUILD_NUMBER + 100))
@@ -69,6 +75,7 @@ workflows:
         BUNDLE_ID: "com.fitherworth.app"
       node: 22
       xcode: latest
+      cocoapods: default
 
     scripts:
       - name: Install npm dependencies
@@ -76,6 +83,11 @@ workflows:
 
       - name: Sync Capacitor iOS
         script: npx cap sync ios
+
+      - name: Install CocoaPods dependencies
+        script: |
+          cd ios/App
+          pod install
 
       - name: Set development build number
         script: cd ios/App && agvtool new-version -all $(($BUILD_NUMBER + 200))
