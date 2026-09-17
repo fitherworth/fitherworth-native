@@ -11,7 +11,6 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "@capacitor-mlkit/barcode-scanning": "^8.2.1",
     "@capacitor/app": "^8.1.1",
     "@capacitor/camera": "^8.2.4",
     "@capacitor/cli": "^8.4.2",
@@ -20,7 +19,8 @@
     "@capacitor/keyboard": "^8.0.5",
     "@capacitor/preferences": "^8.0.1",
     "@capacitor/status-bar": "^8.0.3",
-    "@revenuecat/purchases-capacitor": "^13.2.4"
+    "@revenuecat/purchases-capacitor": "^13.2.4",
+    "capacitor-barcode-scanner": "^8.0.0"
   },
   "devDependencies": {
     "typescript": "^7.0.2"
