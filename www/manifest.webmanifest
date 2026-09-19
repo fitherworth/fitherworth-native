@@ -1,0 +1,12 @@
+{
+  "name": "FitHerWorth — Rooted in worth",
+  "short_name": "FitHerWorth",
+  "description": "Faith, fitness, and wellness companion for women.",
+  "start_url": "/app",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fbf6f0",
+  "theme_color": "#fbf6f0",
+  "categories": ["health", "lifestyle", "fitness"]
+}

@@ -1,0 +1,1 @@
+function e(){if(typeof window>"u")return"web";const t=window.Capacitor;if(!t||t.isNativePlatform&&!t.isNativePlatform())return"web";const i=t.getPlatform?.()??"web";return i==="ios"||i==="android"?i:"web"}function n(){const t=e();return t==="ios"||t==="android"}export{e as g,n as i};

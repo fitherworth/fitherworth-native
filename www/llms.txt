@@ -1,0 +1,11 @@
+# FitHerWorth
+
+> A gentle faith + fitness wellness companion for women — AI calorie tracking, mindful workouts, mood and journal, and a kind community, rooted in worth.
+
+FitHerWorth helps women build sustainable habits around food, movement, and reflection in a calm, supportive space. Free tools include typed AI calorie estimation, water and weight tracking, mood logging, journaling, community access, and a daily dashboard. Premium unlocks camera and barcode scanning, advanced AI workouts, journal prompts, intermittent fasting, personalized meal strategy, and custom macros.
+
+## Pages
+
+- [Home](/): Overview of FitHerWorth and its features.
+- [Privacy Policy](/privacy): How FitHerWorth handles your data.
+- [Terms of Service](/terms): Terms for using FitHerWorth.

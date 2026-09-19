@@ -1,0 +1,1 @@
+import{c,f as e}from"./index-CKcimlXj.js";import{c as r}from"./createServerFn-DEFotoUI.js";const o=[["circle",{cx:"12",cy:"12",r:"10",key:"1mglay"}],["path",{d:"m9 12 2 2 4-4",key:"dzmm74"}]],f=c("circle-check",o),n=r({method:"POST"}).handler(e("aec4305eb1b3d0f4f824644ff3cbf429878db14ff7a647d305330f95e35f3989"));export{f as C,n};
