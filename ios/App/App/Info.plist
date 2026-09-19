@@ -54,6 +54,9 @@
 <key>NSCameraUsageDescription</key>
 <string>FitHerWorth uses your camera to take photos of meals for food and calorie analysis.</string>
 
+<key>NSPhotoLibraryUsageDescription</key>
+<string>FitHerWorth uses your photos to analyze meals and provide food and calorie information.</string>
+
 <key>NSPhotoLibraryAddUsageDescription</key>
 <string>FitHerWorth saves meal photos you capture for food and calorie analysis.</string>
 </dict>
